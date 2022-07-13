@@ -1,6 +1,6 @@
 import axios from 'axios'
 import swAlert from '@sweetalert/with-react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
 
 const Login = () => {
 
@@ -46,20 +46,31 @@ const Login = () => {
 
   }
 
+  let token = localStorage.getItem('token')
+
   return (
-    <form onSubmit={submitHandler}>
-        <label>
-            <span>Email</span> <br/>
-            <input type='email' name='email' /> 
-        </label>
-        <br />
-        <label>
-            <span>Password</span> <br/>
-            <input type='password' name='password'/> 
-        </label>
-        <br />
-        <button type='submit'>Login</button>
-    </form>
+    <>
+      {token && <Navigate replace to="/list"/>}
+
+      <div className='row'>
+        <div className='col-6 offset-3'>
+          <h2>Login Form</h2>
+          <form onSubmit={submitHandler}>
+            <label className='form-label d-block'>
+                <span>Email</span> <br/>
+                <input className='form-control' type='email' name='email' /> 
+            </label>
+            <br />
+            <label className='form-label d-block '>
+                <span>Password</span> <br/>
+                <input className='form-control' type='password' name='password'/> 
+            </label>
+            <br />
+            <button className='btn btn-success' type='submit'>Login</button>
+          </form>
+        </div>
+      </div>
+    </>
   )
 }
 

@@ -1,7 +1,7 @@
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="d-flex flex-column justify-content-end">
         <nav>
             <ul>
                 <li>
