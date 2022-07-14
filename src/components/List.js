@@ -1,6 +1,7 @@
 import { Link, Navigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import swAlert from '@sweetalert/with-react'
 
 const List = () => {
 
@@ -15,24 +16,33 @@ const List = () => {
         const apiData = response.data
         setMovieList(apiData.results)
       })
+      .catch((err) => {
+        swAlert(<h2>Error fetching data</h2>)
+      })
   },[setMovieList])
 
-  console.log(movieList)
 
   return (
     <>
       { !token && <Navigate replace to="/" /> }
+      
       <div className='row'>
-        <div className='col-3'>
-          <div className="card">
-            <img src="..." className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <Link to="/" className="btn btn-primary">Go somewhere</Link>
-            </div>
-          </div>
-        </div>
+      {
+        movieList.map((elem, idx) => {
+          return (
+              <div className='col-3' key={idx}>
+                <div className="card my-4">
+                  <img src={`https://image.tmdb.org/t/p/w500/${elem.poster_path}`} className="card-img-top" alt="..." />
+                  <div className="card-body">
+                    <h5 className="card-title">{elem.title}</h5>
+                    <p className="card-text">{elem.overview.substring(0,100)}...</p>
+                    <Link to={`/detail?movieID=${elem.id}`} className="btn btn-primary">View detail</Link>
+                  </div>
+                </div>
+              </div>
+          )
+        })
+      }
       </div>
     </>
   )
