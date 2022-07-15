@@ -5,7 +5,7 @@ import swAlert from '@sweetalert/with-react'
 
 const List = () => {
 
-  const token = localStorage.getItem('token')  
+  const token = sessionStorage.getItem('token')  
 
   const [movieList, setMovieList] = useState([])
 

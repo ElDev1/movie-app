@@ -40,13 +40,13 @@ const Login = () => {
       .then(res => {
           console.log(res.data)
           const token = res.data.token
-          localStorage.setItem('token', token)
+          sessionStorage.setItem('token', token)
           history('/list')
       })
 
   }
 
-  let token = localStorage.getItem('token')
+  let token = sessionStorage.getItem('token')
 
   return (
     <>
