@@ -1,6 +1,9 @@
 import swAlert from '@sweetalert/with-react'
+import { useNavigate } from 'react-router-dom';
 
 const Search = () => {
+
+  const history = useNavigate() 
 
   const submitHandler = (e) => {
       e.preventDefault();
@@ -8,8 +11,12 @@ const Search = () => {
 
       if(keyword.length === 0) {
           swAlert(<h5>Type a movie name</h5>)
-      } else if(keyword < 4) {
+      } else if(keyword.length < 4) {
           swAlert('you must type more than four characters')
+      } else {
+        e.currentTarget.keyword.value = ''
+        history(`/results?keyword=${keyword}`)
+        history(0)
       }
   }
 

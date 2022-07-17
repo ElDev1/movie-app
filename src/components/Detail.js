@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom'
+import { Navigate,  } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
@@ -10,6 +10,7 @@ const Detail = () => {
 
   const query = new URLSearchParams(window.location.search)
   const movieID = query.get('movieID')
+
 
   useEffect(() => {
       const endPoint = `https:api.themoviedb.org/3/movie/${movieID}?api_key=5807de57c2531ea67e559dc2a04a9231&language=en-US`
