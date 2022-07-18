@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import swAlert from '@sweetalert/with-react'
 
-const List = () => {
+const List = ({ addOrRemoveFromFavs }) => {
 
   const token = sessionStorage.getItem('token')  
 
@@ -33,6 +33,9 @@ const List = () => {
               <div className='col-3' key={idx}>
                 <div className="card my-4">
                   <img src={`https://image.tmdb.org/t/p/w500/${elem.poster_path}`} className="card-img-top" alt="..." />
+                  <button onClick={addOrRemoveFromFavs} data-movie-id={elem.id} className='favourite-btn'>
+                  🖤
+                  </button>
                   <div className="card-body">
                     <h5 className="card-title">{elem.title}</h5>
                     <p className="card-text">{elem.overview.substring(0,100)}...</p>
