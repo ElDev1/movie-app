@@ -19,6 +19,9 @@ const Header = () => {
                             <Link to='/list' className='nav-link'>List</Link>
                         </li>
                         <li className='nav-item'>
+                            <Link to='/favourites' className='nav-link'>Favourites</Link>
+                        </li>
+                        <li className='nav-item'>
                             <Link to='/contact' className='nav-link'>Contact</Link>
                         </li>
                     </ul>

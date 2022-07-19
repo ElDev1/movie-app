@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Detail from './components/Detail';
 import Results from './components/Results';
+import Favourites from './components/Favourites';
 
 import './CSS/App.css'
 import './CSS/bootstrap.min.css'
@@ -35,9 +36,10 @@ function App() {
       id: btn.dataset.movieId
     }
 
-    let movieIsInArray = tempMoviesInFavs.find(movie => {
+    const movieIsInArray = tempMoviesInFavs.find(movie => {
       return movie.id === movieData.id
     })
+   
 
     if (!movieIsInArray) {
       tempMoviesInFavs.push(movieData)
@@ -46,6 +48,7 @@ function App() {
       let moviesLeft = tempMoviesInFavs.filter(movie => {
         return movie.id !== movieData.id
       })
+      tempMoviesInFavs = moviesLeft.map(item => item)
       localStorage.setItem('favs', JSON.stringify(moviesLeft))
     }
    
@@ -59,6 +62,7 @@ function App() {
         <Route path='/list' element={<List addOrRemoveFromFavs={addOrRemoveFromFavs}/>} />
         <Route path='/detail' element={<Detail />} />
         <Route path='/results' element={<Results />} />
+        <Route path='/favourites' element={<Favourites />} />
       </Routes>
       <Footer />
     </div>
