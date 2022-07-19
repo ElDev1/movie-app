@@ -1,31 +1,24 @@
-import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 
-const Favourites = () => {
-    const [favourites, setFavourites] = useState([])
-
-    useEffect(() => {
-        const favsInLocal = localStorage.getItem('favs')
-        
-        if(favsInLocal !== null) {
-            const favsArray = JSON.parse(favsInLocal)
-            setFavourites(favsArray)
-        }
-    },[])
+const Favorites = (props) => {
+    
+    const token = sessionStorage.getItem('token')
 
   return (
-    <>
-        <h2>Your favourites movies</h2>
+    <>  
+        { !token && <Navigate replace to="/" /> }
+        <h2>Your favorites movies</h2>
         <div className='row'>
+        { !props.favorites.length && <div className="col-12 text-danger">You don't have favorite movies</div>}
         {
-            favourites.map((elem, idx) => {
+            props.favorites.map((elem, idx) => {
             return (
                 <div className='col-3' key={idx}>
                     <div className="card my-4">
                     <img src={elem.imgUrl} className="card-img-top" alt="..." />
-                    {/* <button onClick={addOrRemoveFromFavs} data-movie-id={elem.id} className='favourite-btn'>
+                    <button onClick={props.addOrRemoveFromFavs} data-movie-id={elem.id} className='favourite-btn'>
                     🖤
-                    </button> */}
+                    </button> 
                     <div className="card-body">
                         <h5 className="card-title">{elem.title}</h5>
                         <p className="card-text">{elem.overview.substring(0,100)}...</p>
@@ -41,4 +34,4 @@ const Favourites = () => {
   )
 }
 
-export default Favourites
+export default Favorites
