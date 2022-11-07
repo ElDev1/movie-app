@@ -58,12 +58,12 @@ const Login = () => {
           <form onSubmit={submitHandler}>
             <label className='form-label d-block'>
                 <span>Email</span> <br/>
-                <input className='form-control' type='email' name='email' /> 
+                <input className='form-control' type='email' name='email' value='challenge@alkemy.org'/> 
             </label>
             <br />
             <label className='form-label d-block '>
                 <span>Password</span> <br/>
-                <input className='form-control' type='password' name='password'/> 
+                <input className='form-control' type='password' name='password' value='react'/> 
             </label>
             <br />
             <button className='btn btn-success' type='submit'>Login</button>

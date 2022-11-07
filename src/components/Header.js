@@ -13,16 +13,10 @@ const Header = (props) => {
                 <div className='collapse navbar-collapse' id="navbarNav">
                     <ul className='navbar-nav'>
                         <li className='nav-item'>
-                            <Link to='/' className='nav-link'>Home</Link>
-                        </li>
-                        <li className='nav-item'>
                             <Link to='/list' className='nav-link'>List</Link>
                         </li>
                         <li className='nav-item'>
                             <Link to='/favorites' className='nav-link'>Favorites</Link>
-                        </li>
-                        <li className='nav-item'>
-                            <Link to='/contact' className='nav-link'>Contact</Link>
                         </li>
                         <li className='nav-item d-flex align-items-center'>
                             <span className='text-success'>
