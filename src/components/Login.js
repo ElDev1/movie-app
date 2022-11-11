@@ -39,11 +39,10 @@ const Login = () => {
       .post('http://challenge-react.alkemy.org', {email, password})
       .then(res => {
           console.log(res.data)
-          const token = res.data.token
+          const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxM…AyMn0.ilhFPrG0y7olRHifbjvcMOlH7q2YwlegT0f4aSbryBE"
           sessionStorage.setItem('token', token)
           history('/list')
       })
-
   }
 
   let token = sessionStorage.getItem('token')
