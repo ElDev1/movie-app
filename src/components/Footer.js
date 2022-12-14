@@ -1,8 +1,10 @@
 
 const Footer = () => {
   return (
-    <footer className="d-flex align-items-end">
-        <p>Alkemy Challenge</p>
+    <footer className="bg-light text-center text-lg-start">
+      <div className="text-center p-3">
+        Alkemy challenge
+      </div>
     </footer>
   )
 }
